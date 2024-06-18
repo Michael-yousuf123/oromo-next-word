@@ -1,18 +1,24 @@
-import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-pages = set()
-def getLinks(url):
-    global pages
-    html = urlopen('https://www.bbc.com/afaanoromoo.{}'.format(url))
-    bs = BeautifulSoup(html, 'html.parser')
-
-    for lin in bs.find_all('a', href=re.compile('^(/articles/)')):
-        if 'href' in lin.attrs:
-            if lin.attrs['href'] not in pages:
-                newPage = lin.attrs['href']
-                print(newPage)
-                pages.add(newPage)
-                getLinks(newPage)
-if __name__ == '__main__':
-    getLinks("https://www.bbc.com/")
+import pandas as pd
+import bs4 as BeautifulSoup
+import requests
+def text_mining(urls):
+    data = []
+    for url in urls:
+        print(url)
+        req = requests.get(url)
+        c = req.content
+        soup = BeautifulSoup(c, "html.parser")
+        link = url
+        title = soup.find('h1',class_="bbc-csfh25 e1p3vdyi0").text
+        article_text = ''
+        article = soup.find("div", {"class":"bbc-bg8vrv"}).findAll('p')
+        for element in article:
+            article_text += '\n' + ''.join(element.findAll(text = True))
+        data.append({
+            'Title':title,
+            'Link':url,
+            'Contents':article
+            })
+    df = pd.DataFrame(data).to_csv('news.csv',index=False)
+    print(df)
+    return article_text
