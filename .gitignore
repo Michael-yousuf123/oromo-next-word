@@ -1,2 +1,5 @@
 oromo/
 /data/news.csv
+/data/fana.csv
+*ipynb
+/data/fanabusiness.csv
