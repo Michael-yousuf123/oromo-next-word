@@ -8,3 +8,4 @@ namelist = bs.find_all('class', {'class':'green'})
 
 for name in namelist:
     print(name.get_text())
+    
