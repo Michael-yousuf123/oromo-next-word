@@ -1,8 +1,10 @@
 oromo/
-/data/news.csv
-/data/fana.csv
-/data/health.csv
-/data/business.csv
+/data/bbcnews.csv
+/data/fanasportii.csv
+/data/fanahealth.csv
+/data/fanatecno.csv
 *ipynb
 /data/fanabusiness.csv
 /data/voanews.csv
+*.txt
+*.csv
