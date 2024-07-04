@@ -1,4 +1,4 @@
-oromo/
+word/
 /data/bbcnews.csv
 /data/fanasportii.csv
 /data/fanahealth.csv
@@ -6,5 +6,5 @@ oromo/
 *ipynb
 /data/fanabusiness.csv
 /data/voanews.csv
-*.txt
+/data/**
 *.csv
