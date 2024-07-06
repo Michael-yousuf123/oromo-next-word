@@ -9,3 +9,4 @@ word/
 /data/**
 *.csv
 *.zip
+**/models/*/
